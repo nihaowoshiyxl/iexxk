@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
       # 检出代码
       - name: Checkout code
-        uses: actions/checkout@v3
 
       # 安装 Butane ,butane github仓库地址，后期更新可以去上面复制新版本的下载链接：https://github.com/coreos/butane/releases
       - name: Install Butane
