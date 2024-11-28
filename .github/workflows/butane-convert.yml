@@ -1,4 +1,4 @@
-name: 运行buane将YAML文件转换为JSON Ignition配置
+name: 执行butane转换
 
 on:
   workflow_dispatch:
