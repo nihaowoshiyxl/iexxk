@@ -35,8 +35,10 @@ jobs:
       # 将生成的文件推送回仓库
       - name: Commit and Push Changes
         run: |
+          yaml_file="${{ github.event.inputs.yaml_file }}"
+          json_file="${yaml_file%.yaml}.json"
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add "${{ github.event.inputs.yaml_file%.yaml }}.json"
-          git commit -m "Add generated Ignition JSON for ${{ github.event.inputs.yaml_file }}"
+          git add "$json_file"
+          git commit -m "Add generated Ignition JSON for $yaml_file"
           git push origin HEAD
