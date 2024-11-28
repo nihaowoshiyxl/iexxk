@@ -30,7 +30,4 @@ jobs:
           yaml_file="${{ github.event.inputs.yaml_file }}"
           json_file="${yaml_file%.yaml}.json"
           butane --pretty --strict "$yaml_file" > "$json_file"
-      # 显示生成的 JSON 文件
-      - name: Output generated JSON
-        run: |
-          cat "${yaml_file%.yaml}.json"          
+          cat "$json_file"          
