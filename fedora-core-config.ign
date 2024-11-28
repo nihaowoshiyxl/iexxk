@@ -1,29 +1,14 @@
 {
   "ignition": {
-    "version": "3.2.0"
+    "version": "3.3.0"
   },
   "passwd": {
     "users": [
       {
-        "name": "core",                   // 用户名
-        "passwordHash": "$6$2IyprGKovXyaBGF0$Rc.sMxknAcAbq1ksc/LibwbiMO3CZgn1NsjtXfbARQ/Y6ply0fqTiAu.K3tL2uk8kJbxqJQHONIWtA5Y2TZt6/",  // 密码的哈希值执行`openssl passwd -6 corecore`获取
-        "shell": "/usr/bin/bash",         // 默认 shell
-        "create": true
-      }
-    ]
-  },
-  "sshd": {
-    "config": {
-      "permitRootLogin": "no"           // 允许 root 用户 SSH 登录（可选）
-    }
-  },
-  "storage": {
-    "files": [
-      {
-        "path": "/etc/hostname",           
-        "contents": {
-          "source": "data:text/plain;charset=utf-8;base64,ZXh4aw==" // 设置主机名exxk,执行`echo -n "exxk" | base64` 输出:ZXh4aw==
-        }
+        "name": "core",
+        "sshAuthorizedKeys": [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBRY5NvpBIemtf+8eoaNa3K7TKxnGsK4do4t2WeM1xqM exxk.lx@gmail.com"
+        ]
       }
     ]
   }
