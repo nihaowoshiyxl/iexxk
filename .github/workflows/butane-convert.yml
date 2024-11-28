@@ -1,18 +1,32 @@
 name: Convert YAML to Ignition JSON
 
 on:
-  push:
-    branches: [ "master" ]
+  workflow_dispatch:
+    inputs:
+      yaml_file:
+        description: "Path to the YAML file to convert (e.g., config.yaml)"
+        required: false
+        default: "fedora-core-config.yaml"
 
 jobs:
   convert:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # 检出代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 安装 Butane ,butane github仓库地址，后期更新可以去上面复制新版本的下载链接：https://github.com/coreos/butane/releases
       - name: Install Butane
         run: |
           wget https://github.com/coreos/butane/releases/download/v0.22.0/butane-x86_64-unknown-linux-gnu
           chmod +x butane-x86_64-unknown-linux-gnu
           sudo mv butane-x86_64-unknown-linux-gnu /usr/local/bin/butane
 
+      # 转换 YAML 文件为 Ignition JSON
+      - name: Convert YAML to Ignition
+        run: |
+          yaml_file="${{ github.event.inputs.yaml_file }}"
+          json_file="${yaml_file%.yaml}.json"
+          butane --pretty --strict "$yaml_file" > "$json_file"
