@@ -30,4 +30,13 @@ jobs:
           yaml_file="${{ github.event.inputs.yaml_file }}"
           json_file="${yaml_file%.yaml}.json"
           butane --pretty --strict "$yaml_file" > "$json_file"
-          cat "$json_file"          
+          cat "$json_file"  
+          
+      # 将生成的文件推送回仓库
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${{ github.event.inputs.yaml_file%.yaml }}.json"
+          git commit -m "Add generated Ignition JSON for ${{ github.event.inputs.yaml_file }}"
+          git push origin HEAD
