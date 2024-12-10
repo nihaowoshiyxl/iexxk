@@ -1,6 +1,6 @@
 variant: fcos
 version: 1.4.0
-packages:
+extensions:
   - nfs-utils
 passwd:
   users:
