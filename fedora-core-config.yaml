@@ -1,5 +1,7 @@
 variant: fcos
 version: 1.4.0
+packages:
+  - nfs-utils
 passwd:
   users:
     - name: core
