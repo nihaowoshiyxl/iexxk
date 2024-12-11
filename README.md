@@ -1,4 +1,4 @@
-## butane自动话
+## butane自动化
 #### 需求说明
 通过该方式，就不用在本地安装butane，然后直接可以在线配置，并转换成在线系统用的json配置
 运行butane将YAML文件转换为JSON Ignition配置。
