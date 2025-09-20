@@ -1,14 +1,28 @@
 {
   "ignition": {
-    "version": "3.3.0"
+    "version": "3.5.0"
   },
   "passwd": {
     "users": [
       {
+        "groups": [
+          "wheel",
+          "sudo"
+        ],
         "name": "core",
-        "sshAuthorizedKeys": [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBRY5NvpBIemtf+8eoaNa3K7TKxnGsK4do4t2WeM1xqM exxk.lx@gmail.com"
-        ]
+        "passwordHash": "$y$j9T$z0N9Y6zQV3aG8bL1cK2dM3/$5xQ7wE9rT2yU4iO6pS8dF0gH1jK3lM5n"
+      }
+    ]
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/etc/ssh/sshd_config.d/20-enable-passwords.conf",
+        "contents": {
+          "compression": "",
+          "source": "data:;base64,IyDlkK/nlKhTU0jlr4bnoIHnmbvlvZXvvIjopobnm5bns7vnu5/pu5jorqTnpoHnlKjphY3nva7vvIkKIyDmlofku7blkI3liY3nvIAiMjAi56Gu5L+d5LyY5YWI57qn6auY5LqO57O757uf6buY6K6k55qEIjQwLWRpc2FibGUtcGFzc3dvcmRzLmNvbmYiClBhc3N3b3JkQXV0aGVudGljYXRpb24geWVzCg=="
+        },
+        "mode": 420
       }
     ]
   }
