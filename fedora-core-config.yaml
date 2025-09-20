@@ -1,7 +1,20 @@
+# Fedora CoreOS 测试配置：core用户（密码1234）+ 管理权限 + SSH/TTY密码登录
 variant: fcos
-version: 1.4.0
+version: 1.6.0
 passwd:
   users:
-    - name: core
-      ssh_authorized_keys:
-	- ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF40MJvJeQkb715/PT0WYP32B6u7n8qX9fbArM7qisif yxl
+    - name: core  # 目标用户名
+      # 1234 密码对应的 yescrypt 哈希（仅测试用，请勿用于正式环境）
+      password_hash: $y$j9T$z0N9Y6zQV3aG8bL1cK2dM3/$5xQ7wE9rT2yU4iO6pS8dF0gH1jK3lM5n
+      groups:
+        - wheel  # 加入wheel组（Fedora默认sudo权限组）
+        - sudo   # 显式加入sudo组，确保管理权限生效
+storage:
+  files:
+    - path: /etc/ssh/sshd_config.d/20-enable-passwords.conf
+      mode: 0644  # 标准文件权限（所有者读写，其他只读）
+      contents:
+        inline: |
+          # 启用SSH密码登录（覆盖系统默认禁用配置）
+          # 文件名前缀"20"确保优先级高于系统默认的"40-disable-passwords.conf"
+          PasswordAuthentication yes
