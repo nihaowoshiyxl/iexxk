@@ -4,4 +4,4 @@ passwd:
   users:
     - name: core
       ssh_authorized_keys:
-        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBRY5NvpBIemtf+8eoaNa3K7TKxnGsK4do4t2WeM1xqM exxk.lx@gmail.com
+	- ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF40MJvJeQkb715/PT0WYP32B6u7n8qX9fbArM7qisif yxl
